@@ -1,10 +1,12 @@
+---
+description: Create, manage, and operate virtual companies with AI agents and workflows
+deprecated: false
+---
+
 # SiliconAgent — Main Entry Point & Command Router
 
 ## Description
 Create, manage, and operate isolated virtual companies with AI agents, workflows, and state management. Supports any company type — from SaaS startups to schools, construction firms, hospitals, and semiconductor fabs.
-
-## Trigger
-This skill activates when the user invokes `/silicon-agent` or uses natural language matching company operations.
 
 ## Command Parsing
 
@@ -43,7 +45,7 @@ Parse the user's input to extract: **company name**, **action**, and **arguments
 | "start a construction company [name]" | `create construction company <name>` |
 | "set up a semiconductor fab [name]" | `create semiconductor company <name>` |
 | "how is [name] doing?" | `<name> status` |
-| "show [name>'s tasks" | `<name> task list` |
+| "show [name]'s tasks" | `<name> task list` |
 | "hire [role] for [name]" | `<name> hire <role>` |
 | "[name] build [feature]" | `<name> run product-development --feature "<feature>"` |
 | "show all companies" | `list` |
@@ -164,9 +166,9 @@ Before executing ANY company-scoped command:
 - If no workflow fits → generates a dynamic workflow on-the-fly
 - Executes the workflow, collects deliverables, presents results
 - Examples:
-  - `/silicon-agent lincoln-high task "conduct maths exam slip test for grade 10 on Saturday"`
-  - `/silicon-agent chipworks task "double production from unit 3, prepare budget and plan"`
-  - `/silicon-agent acme task "research competitor pricing for Q3"`
+  - `/silicon-agent:silicon-agent lincoln-high task "conduct maths exam slip test for grade 10 on Saturday"`
+  - `/silicon-agent:silicon-agent chipworks task "double production from unit 3, prepare budget and plan"`
+  - `/silicon-agent:silicon-agent acme task "research competitor pricing for Q3"`
 
 ### Catch-All: Free-Form Task Fallback
 
@@ -177,9 +179,9 @@ When user input does NOT match any known command pattern but references a compan
 
 This means users can type naturally:
 ```
-/silicon-agent lincoln-high conduct maths exam slip test for grade 10 on Saturday
-/silicon-agent chipworks we need double output from unit 3, prepare the plan
-/silicon-agent acme research our competitors and prepare a strategy document
+/silicon-agent:silicon-agent lincoln-high conduct maths exam slip test for grade 10 on Saturday
+/silicon-agent:silicon-agent chipworks we need double output from unit 3, prepare the plan
+/silicon-agent:silicon-agent acme research our competitors and prepare a strategy document
 ```
 
 All of the above get routed as: `<company> task "<full input>"`
@@ -230,9 +232,9 @@ After every mutation, append to `companies/<name>/logs/audit.jsonl`:
 
 | Error | Response |
 |-------|----------|
-| Company not found | "Company '<name>' doesn't exist. Create it with: `/silicon-agent create <type> company <name>`" |
-| Company already exists | "Company '<name>' already exists. Use `/silicon-agent <name> status` to see its state." |
-| Unknown agent role | "Role '<role>' not found. Available: <built-in + company agents>. Or create custom: `/silicon-agent <name> hire <role>`" |
+| Company not found | "Company '<name>' doesn't exist. Create it with: `/silicon-agent:silicon-agent create <type> company <name>`" |
+| Company already exists | "Company '<name>' already exists. Use `/silicon-agent:silicon-agent <name> status` to see its state." |
+| Unknown agent role | "Role '<role>' not found. Available: <built-in + company agents>. Or create custom: `/silicon-agent:silicon-agent <name> hire <role>`" |
 | Unknown command BUT company found | Route as free-form task: `<company> task "<input>"` → task executor handles it |
 | Unknown command AND no company | "I can help with: creating companies, managing agents, running tasks. What would you like to do?" |
 
