@@ -1,0 +1,57 @@
+# Pivot Workflow
+
+## Description
+Company direction change pipeline: Assess → Decide → Realign → Resume
+
+## Trigger
+Activated when a company needs to change direction — new market, new product focus, or strategic shift.
+
+## Phases
+
+### Phase 1: Assess
+**Agent:** ceo-advisor
+**Input:** Pivot trigger (market change, failed product, new opportunity)
+**Steps:**
+1. Analyze current company state and performance
+2. Identify what's working and what's not
+3. Evaluate the pivot opportunity or necessity
+4. Assess risks and potential of new direction
+5. Present assessment with options
+**Output:** `companies/<name>/outputs/ceo-advisor/pivot-assessment-<date>-v1.md`
+
+### Phase 2: Decide
+**Agent:** ceo-advisor + silicon-agent
+**Input:** Assessment with options
+**Steps:**
+1. Present options to human (CEO) for decision
+2. Document the chosen direction
+3. Define new goals and success metrics
+4. Identify what changes are needed (agents, workflows, priorities)
+**Output:** Pivot decision documented in `companies/<name>/memory/company-knowledge.md`
+
+### Phase 3: Realign
+**Agent:** silicon-agent
+**Input:** Pivot decision
+**Steps:**
+1. Update `companies/<name>/manifest.md` with new direction
+2. Reassign or spawn agents as needed
+3. Cancel or reprioritize existing tasks on task wall
+4. Update workflows if needed
+5. Notify all agents via inbox system
+6. Archive previous direction artifacts
+**Output:** Updated company structure, task wall, and agent assignments
+
+### Phase 4: Resume
+**Agent:** silicon-agent
+**Input:** Realigned company
+**Steps:**
+1. Activate appropriate workflows for new direction
+2. Assign first tasks based on new priorities
+3. Monitor initial execution
+4. Log pivot to audit trail
+**Output:** Company operational under new direction
+
+## Failure Handling
+- Assessment inconclusive → gather more data, extend Phase 1
+- Human rejects all options → present more alternatives or refine existing
+- Realign fails → rollback to previous state, escalate

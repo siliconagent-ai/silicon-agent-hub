@@ -1,0 +1,74 @@
+# Recovery Workflow
+
+## Description
+Failure recovery pipeline: Error → Classify → Retry/Fallback/Escalate/Abort
+
+## Trigger
+Activated when a task fails or a workflow phase reports an error.
+
+## Phases
+
+### Phase 1: Classify
+**Agent:** silicon-agent
+**Input:** Failure details from task or workflow
+**Steps:**
+1. Read failure details
+2. Classify failure category:
+   - **transient**: Temporary issue (network, timeout, rate limit)
+   - **agent_error**: Agent produced incorrect or incomplete output
+   - **task_error**: Task definition was unclear or contradictory
+   - **system_error**: Infrastructure or configuration issue
+3. Assess severity and recoverability
+**Output:** Failure classification in `companies/<name>/memory/failures.md`
+
+### Phase 2: Decide
+**Agent:** silicon-agent
+**Input:** Failure classification
+**Steps:**
+Based on category and severity:
+
+| Category | Severity | Action |
+|----------|----------|--------|
+| transient | any | Retry (max 3) |
+| agent_error | low | Retry with clearer instructions |
+| agent_error | high | Escalate to human |
+| task_error | any | Refine task, retry |
+| system_error | any | Escalate to human |
+
+### Phase 3: Execute Recovery
+**Agent:** silicon-agent
+
+#### Retry
+1. Clear previous attempt state
+2. Re-invoke agent with refined instructions
+3. Include lesson from failure in new prompt
+4. Monitor for repeat failure
+
+#### Fallback
+1. Try alternative approach or agent
+2. Reduce scope if needed
+3. Document what was changed
+
+#### Escalate
+1. Notify human via message
+2. Provide full context: what failed, what was tried, current state
+3. Wait for human decision
+
+#### Abort
+1. Mark task as failed on task wall
+2. Archive partial outputs
+3. Write comprehensive failure report
+4. Log to audit trail
+
+## Failure Logging
+Every failure logged to `companies/<name>/memory/failures.md`:
+```markdown
+## Failure: <task description>
+- **Date**: <timestamp>
+- **Agent**: <agent name>
+- **Error**: <error description>
+- **Root Cause**: <analysis>
+- **Lesson**: <what to avoid next time>
+- **Category**: <transient|agent_error|task_error|system_error>
+- **Resolution**: <retry count | fallback used | escalated | aborted>
+```

@@ -1,0 +1,53 @@
+# Marketing Campaign Workflow
+
+## Description
+End-to-end marketing campaign pipeline: Brief → Content → Distribute → Report
+
+## Phases
+
+### Phase 1: Campaign Brief
+**Agent:** marketing-manager
+**Input:** Campaign goal from task wall
+**Steps:**
+1. Define campaign objective and target audience
+2. Select marketing channels with rationale
+3. Set budget per channel
+4. Define timeline with milestones
+5. Set KPIs and success metrics
+**Output:** `companies/<name>/outputs/marketing-manager/campaign-brief-<topic>-<date>-v1.md`
+**Gate:** Brief must include all required sections (see Marketing Manager quality gates)
+
+### Phase 2: Content Creation
+**Agent:** marketing-manager
+**Input:** Approved campaign brief
+**Steps:**
+1. Create content for each channel (blog post, social media, email)
+2. Ensure brand voice consistency
+3. Include calls-to-action
+4. Optimize for each platform
+**Output:** `companies/<name>/outputs/marketing-manager/content-<topic>-<date>-v1.md`
+
+### Phase 3: Distribution Plan
+**Agent:** marketing-manager
+**Input:** Content assets
+**Steps:**
+1. Schedule content across channels
+2. Define posting cadence
+3. Set up tracking (UTM parameters, analytics)
+4. Coordinate with sales for lead follow-up
+**Output:** `companies/<name>/outputs/marketing-manager/distribution-<topic>-<date>-v1.md`
+
+### Phase 4: Report
+**Agent:** marketing-manager + finance-agent
+**Input:** Campaign results (simulated/tracked)
+**Steps:**
+1. Collect performance metrics per channel
+2. Calculate ROI
+3. Analyze what worked and what didn't
+4. Write campaign report with recommendations
+**Output:** `companies/<name>/outputs/marketing-manager/campaign-report-<topic>-<date>.md`
+
+## Failure Handling
+- Brief rejection → revise based on feedback (max 2 revisions)
+- Content quality issue → rewrite with specific feedback
+- Distribution failure → log failure, attempt alternative channel

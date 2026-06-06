@@ -1,0 +1,83 @@
+categories:
+  - name: product
+    display: Product & Feature Development
+    description: End-to-end product development and feature delivery
+  - name: quality
+    display: Quality & Bug Fixing
+    description: Bug fixes, testing, and quality assurance workflows
+  - name: marketing
+    display: Marketing & Growth
+    description: Campaign planning, content creation, and outreach
+  - name: research
+    display: Research & Analysis
+    description: Investigation, analysis, and knowledge generation
+  - name: operations
+    display: Operations & Recovery
+    description: Emergency fixes, recovery, and operational workflows
+  - name: education
+    display: Education & Curriculum
+    description: Curriculum design, assessment, and academic workflows
+  - name: industrial
+    display: Industrial & Manufacturing
+    description: Production planning, safety audits, and manufacturing workflows
+
+workflows:
+  - name: product-development
+    category: product
+    description: End-to-end: Research → PRD → Implement → QA → Release
+    phases: 5
+    tags: [feature, development, delivery]
+
+  - name: marketing-campaign
+    category: marketing
+    description: Brief → Content → Distribute → Report
+    phases: 4
+    tags: [marketing, campaign, content]
+
+  - name: bugfix
+    category: quality
+    description: Report → Reproduce → Fix → Verify → Deploy
+    phases: 5
+    tags: [bug, fix, quality]
+
+  - name: research
+    category: research
+    description: Investigate → Analyze → Report
+    phases: 3
+    tags: [research, analysis, report]
+
+  - name: hotfix
+    category: operations
+    description: Fix → Test → Deploy (emergency, skip review)
+    phases: 3
+    tags: [emergency, hotfix, critical]
+
+  - name: recovery
+    category: operations
+    description: Error → Classify → Retry/Fallback/Escalate/Abort
+    phases: 3
+    tags: [recovery, error, failure]
+
+  - name: pivot
+    category: operations
+    description: Assess → Decide → Realign → Resume
+    phases: 4
+    tags: [pivot, strategy, change]
+
+  - name: curriculum-design
+    category: education
+    description: Assess needs → Design curriculum → Review → Approve → Implement
+    phases: 5
+    tags: [education, curriculum, school, teaching]
+
+  - name: safety-audit
+    category: industrial
+    description: Plan inspection → Inspect site → Identify hazards → Report → Remediate
+    phases: 5
+    tags: [safety, construction, audit, compliance]
+
+  - name: production-planning
+    category: industrial
+    description: Analyze capacity → Plan production → Budget → Schedule → Risk assessment
+    phases: 5
+    tags: [manufacturing, production, capacity, planning]

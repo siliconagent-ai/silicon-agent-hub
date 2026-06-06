@@ -1,0 +1,55 @@
+name: restaurant
+display_name: Restaurant / Food Service
+description: "Restaurant or food service business with kitchen, front-of-house, management, and procurement teams"
+industry: Food Service / Hospitality
+tags: [restaurant, food, hospitality, dining, culinary, cafe]
+
+agents:
+  - name: restaurant-manager
+    display_name: Restaurant Manager
+    department: management
+    level: 1
+    reports_to: CEO (Human)
+    source: marketplace
+  - name: head-chef
+    display_name: Head Chef
+    department: kitchen
+    level: 2
+    reports_to: restaurant-manager
+    source: marketplace
+  - name: sous-chef
+    display_name: Sous Chef
+    department: kitchen
+    level: 3
+    reports_to: head-chef
+    source: marketplace
+  - name: front-of-house-manager
+    display_name: Front of House Manager
+    department: service
+    level: 2
+    reports_to: restaurant-manager
+    source: marketplace
+  - name: procurement-coordinator
+    display_name: Procurement Coordinator
+    department: procurement
+    level: 2
+    reports_to: restaurant-manager
+    source: marketplace
+  - name: marketing-coordinator
+    display_name: Marketing Coordinator
+    department: marketing
+    level: 3
+    reports_to: restaurant-manager
+    source: marketplace
+
+departments: [management, kitchen, service, procurement, marketing]
+
+capability_map:
+  researcher: head-chef
+  implementer: sous-chef
+  reviewer: head-chef
+  coordinator: restaurant-manager
+  marketing: marketing-coordinator
+  sales: front-of-house-manager
+  support: front-of-house-manager
+  finance: procurement-coordinator

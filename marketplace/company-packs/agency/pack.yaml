@@ -1,0 +1,43 @@
+name: agency
+display_name: Creative Agency
+description: "Creative agency with design, development, marketing, and client management teams"
+industry: Creative Services
+tags: [agency, creative, design, marketing, digital]
+
+agents:
+  - name: product-manager
+    display_name: Account Manager
+    department: engineering
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: engineer
+    display_name: Developer
+    department: engineering
+    level: 3
+    reports_to: product-manager
+    source: built-in
+  - name: marketing-manager
+    display_name: Creative Director
+    department: marketing
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: sales-agent
+    display_name: Business Development
+    department: sales
+    level: 2
+    reports_to: coo
+    source: built-in
+
+departments: [executive, engineering, marketing, sales]
+
+capability_map:
+  researcher: product-manager
+  implementer: engineer
+  reviewer: product-manager
+  coordinator: product-manager
+  marketing: marketing-manager
+  sales: sales-agent
+  support: product-manager
+  finance: product-manager

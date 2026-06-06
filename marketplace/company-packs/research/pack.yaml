@@ -1,0 +1,43 @@
+name: research
+display_name: Research Organization
+description: "Research and development organization focused on scientific investigation and innovation"
+industry: Research & Development
+tags: [research, science, innovation, r&d, laboratory]
+
+agents:
+  - name: research-agent
+    display_name: Research Scientist
+    department: executive
+    level: 3
+    reports_to: coo
+    source: built-in
+  - name: engineer
+    display_name: Research Engineer
+    department: engineering
+    level: 3
+    reports_to: product-manager
+    source: built-in
+  - name: product-manager
+    display_name: Program Manager
+    department: engineering
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: finance-agent
+    display_name: Grant & Finance Manager
+    department: finance
+    level: 2
+    reports_to: coo
+    source: built-in
+
+departments: [executive, engineering, finance]
+
+capability_map:
+  researcher: research-agent
+  implementer: engineer
+  reviewer: research-agent
+  coordinator: product-manager
+  marketing: product-manager
+  sales: product-manager
+  support: engineer
+  finance: finance-agent

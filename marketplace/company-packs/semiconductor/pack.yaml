@@ -1,0 +1,55 @@
+name: semiconductor
+display_name: Semiconductor Manufacturing
+description: "Semiconductor fabrication facility with production, quality, process engineering, and supply chain teams"
+industry: Semiconductor / Manufacturing
+tags: [semiconductor, fab, manufacturing, chips, fabrication, cleanroom]
+
+agents:
+  - name: fab-director
+    display_name: Fab Director
+    department: management
+    level: 1
+    reports_to: CEO (Human)
+    source: marketplace
+  - name: production-planner
+    display_name: Production Planner
+    department: production
+    level: 2
+    reports_to: fab-director
+    source: marketplace
+  - name: process-engineer
+    display_name: Process Engineer
+    department: engineering
+    level: 2
+    reports_to: fab-director
+    source: marketplace
+  - name: quality-inspector
+    display_name: Quality Inspector
+    department: quality
+    level: 2
+    reports_to: fab-director
+    source: marketplace
+  - name: equipment-technician
+    display_name: Equipment Technician
+    department: maintenance
+    level: 3
+    reports_to: process-engineer
+    source: marketplace
+  - name: supply-chain-coordinator
+    display_name: Supply Chain Coordinator
+    department: supply-chain
+    level: 2
+    reports_to: fab-director
+    source: marketplace
+
+departments: [management, production, engineering, quality, maintenance, supply-chain]
+
+capability_map:
+  researcher: process-engineer
+  implementer: production-planner
+  reviewer: quality-inspector
+  coordinator: fab-director
+  marketing: fab-director
+  sales: supply-chain-coordinator
+  support: equipment-technician
+  finance: supply-chain-coordinator

@@ -1,0 +1,32 @@
+# {{WORKFLOW_NAME}} Workflow
+
+## Description
+{{WORKFLOW_DESCRIPTION}}
+
+## Phases
+
+### Phase 1: {{Phase 1 Name}}
+**Agent:** {{agent_name}}
+**Input:** {{input_description}}
+**Steps:**
+1. {{step_1}}
+2. {{step_2}}
+3. {{step_3}}
+**Output:** `companies/<name>/outputs/{{agent_name}}/{{output_pattern}}`
+**Gate:** {{quality_gate_condition}}
+
+### Phase 2: {{Phase 2 Name}}
+**Agent:** {{agent_name}}
+**Input:** {{input_from_previous_phase}}
+**Steps:**
+1. {{step_1}}
+2. {{step_2}}
+**Output:** `companies/<name>/outputs/{{agent_name}}/{{output_pattern}}`
+
+## Failure Handling
+- {{failure_scenario_1}} → {{recovery_action_1}}
+- {{failure_scenario_2}} → {{recovery_action_2}}
+
+## Context Budget
+- Max {{n}} phases in context at once
+- Completed phases summarized and archived to outputs

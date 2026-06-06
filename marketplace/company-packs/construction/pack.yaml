@@ -1,0 +1,55 @@
+name: construction
+display_name: Construction Company
+description: "Construction company with site operations, project management, safety, and procurement teams"
+industry: Construction
+tags: [construction, building, infrastructure, engineering, civil]
+
+agents:
+  - name: project-director
+    display_name: Project Director
+    department: management
+    level: 1
+    reports_to: CEO (Human)
+    source: marketplace
+  - name: site-manager
+    display_name: Site Manager
+    department: site-operations
+    level: 2
+    reports_to: project-director
+    source: marketplace
+  - name: safety-inspector
+    display_name: Safety Inspector
+    department: safety
+    level: 2
+    reports_to: project-director
+    source: marketplace
+  - name: procurement-officer
+    display_name: Procurement Officer
+    department: procurement
+    level: 2
+    reports_to: project-director
+    source: marketplace
+  - name: quantity-surveyor
+    display_name: Quantity Surveyor
+    department: finance
+    level: 3
+    reports_to: procurement-officer
+    source: marketplace
+  - name: site-engineer
+    display_name: Site Engineer
+    department: site-operations
+    level: 3
+    reports_to: site-manager
+    source: marketplace
+
+departments: [management, site-operations, safety, procurement, finance]
+
+capability_map:
+  researcher: site-engineer
+  implementer: site-manager
+  reviewer: safety-inspector
+  coordinator: project-director
+  marketing: project-director
+  sales: project-director
+  support: safety-inspector
+  finance: quantity-surveyor

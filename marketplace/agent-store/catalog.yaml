@@ -1,0 +1,130 @@
+categories:
+  - name: executive
+    display: Executive & Leadership
+    description: Top-level management and strategic roles
+  - name: engineering
+    display: Engineering & Development
+    description: Software engineering, QA, and technical roles
+  - name: education
+    display: Education & Teaching
+    description: School, university, and educational institution roles
+  - name: operations
+    display: Operations & Production
+    description: Manufacturing, construction, and operational roles
+  - name: healthcare
+    display: Healthcare & Medical
+    description: Hospital, clinical, and patient care roles
+  - name: hospitality
+    display: Hospitality & Food Service
+    description: Restaurant, hotel, and food service roles
+  - name: finance
+    display: Finance & Administration
+    description: Budget, procurement, and administrative roles
+  - name: sales-marketing
+    display: Sales & Marketing
+    description: Sales, marketing, and business development roles
+
+agents:
+  # Built-in agents (from agents/ directory)
+  - name: master
+    category: executive
+    description: Hub orchestrator — manages company lifecycle, routes commands
+    built_in: true
+    tags: [orchestrator, management, core]
+
+  - name: ceo-advisor
+    category: executive
+    description: Strategic advisor providing market analysis and risk assessment
+    built_in: true
+    tags: [strategy, advisory, executive]
+
+  - name: coo
+    category: executive
+    description: Chief Operating Officer — operations oversight and cross-department coordination
+    built_in: true
+    tags: [operations, management, coordination]
+
+  - name: product-manager
+    category: engineering
+    description: Product planning, PRDs, user stories, feature prioritization
+    built_in: true
+    tags: [product, planning, requirements]
+
+  - name: engineer
+    category: engineering
+    description: Software development — coding, debugging, refactoring, implementation
+    built_in: true
+    tags: [development, coding, implementation]
+
+  - name: qa-engineer
+    category: engineering
+    description: Quality assurance — test planning, bug reporting, release validation
+    built_in: true
+    tags: [testing, quality, validation]
+
+  - name: marketing-manager
+    category: sales-marketing
+    description: Campaign planning, content creation, SEO, brand management
+    built_in: true
+    tags: [marketing, campaigns, content]
+
+  - name: sales-agent
+    category: sales-marketing
+    description: Lead generation, qualification, outreach, pipeline management
+    built_in: true
+    tags: [sales, leads, pipeline]
+
+  - name: support-agent
+    category: operations
+    description: Issue triage, bug escalation, customer feedback analysis
+    built_in: true
+    tags: [support, triage, customer-service]
+
+  - name: finance-agent
+    category: finance
+    description: Budget tracking, financial reporting, resource optimization
+    built_in: true
+    tags: [finance, budget, reporting]
+
+  - name: research-agent
+    category: executive
+    description: Market research, competitive analysis, technology evaluation
+    built_in: true
+    tags: [research, analysis, intelligence]
+
+  # Marketplace agents (industry-specific)
+  - name: principal
+    category: education
+    description: School principal — academic leadership, policy, and staff management
+    built_in: false
+    tags: [school, education, leadership, administration]
+
+  - name: teacher
+    category: education
+    description: Teacher — lesson planning, instruction, assessment, and student development
+    built_in: false
+    tags: [school, education, teaching, curriculum]
+
+  - name: nurse
+    category: healthcare
+    description: Nurse — patient care, clinical support, and health monitoring
+    built_in: false
+    tags: [hospital, healthcare, nursing, patient-care]
+
+  - name: production-planner
+    category: operations
+    description: Manufacturing production planner — scheduling, capacity, and throughput optimization
+    built_in: false
+    tags: [manufacturing, production, planning, capacity]
+
+  - name: safety-inspector
+    category: operations
+    description: Construction/industrial safety inspector — compliance, hazard identification, audits
+    built_in: false
+    tags: [construction, safety, compliance, inspection]
+
+  - name: site-manager
+    category: operations
+    description: Construction site manager — day-to-day site operations and crew coordination
+    built_in: false
+    tags: [construction, site, operations, management]

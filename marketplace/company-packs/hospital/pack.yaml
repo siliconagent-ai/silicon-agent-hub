@@ -1,0 +1,55 @@
+name: hospital
+display_name: Hospital / Healthcare Facility
+description: "Hospital or healthcare facility with clinical, administrative, pharmacy, and support departments"
+industry: Healthcare
+tags: [hospital, healthcare, medical, clinical, patient-care]
+
+agents:
+  - name: medical-director
+    display_name: Medical Director
+    department: clinical
+    level: 1
+    reports_to: CEO (Human)
+    source: marketplace
+  - name: head-nurse
+    display_name: Head Nurse
+    department: nursing
+    level: 2
+    reports_to: medical-director
+    source: marketplace
+  - name: nurse
+    display_name: Nurse
+    department: nursing
+    level: 3
+    reports_to: head-nurse
+    source: marketplace
+  - name: pharmacist
+    display_name: Pharmacist
+    department: pharmacy
+    level: 2
+    reports_to: medical-director
+    source: marketplace
+  - name: hospital-administrator
+    display_name: Hospital Administrator
+    department: administration
+    level: 2
+    reports_to: medical-director
+    source: marketplace
+  - name: patient-coordinator
+    display_name: Patient Coordinator
+    department: patient-services
+    level: 3
+    reports_to: hospital-administrator
+    source: marketplace
+
+departments: [clinical, nursing, pharmacy, administration, patient-services]
+
+capability_map:
+  researcher: medical-director
+  implementer: head-nurse
+  reviewer: medical-director
+  coordinator: hospital-administrator
+  marketing: hospital-administrator
+  sales: patient-coordinator
+  support: patient-coordinator
+  finance: hospital-administrator

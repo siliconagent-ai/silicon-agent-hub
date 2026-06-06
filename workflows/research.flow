@@ -1,0 +1,47 @@
+# Research Workflow
+
+## Description
+Research and analysis pipeline: Investigate → Analyze → Report
+
+## Phases
+
+### Phase 1: Investigate
+**Agent:** research-agent
+**Input:** Research question or topic from task wall
+**Steps:**
+1. Define research scope and questions
+2. Identify relevant sources and data
+3. Gather information using WebSearch and WebFetch
+4. Collect data from multiple sources (minimum 3)
+**Output:** `companies/<name>/outputs/research-agent/investigation-<topic>-<date>.md`
+
+### Phase 2: Analyze
+**Agent:** research-agent
+**Input:** Gathered research data
+**Steps:**
+1. Synthesize findings across sources
+2. Identify patterns, trends, and insights
+3. Assess confidence level for each finding
+4. Identify gaps and limitations
+**Output:** `companies/<name>/outputs/research-agent/analysis-<topic>-<date>.md`
+
+### Phase 3: Report
+**Agent:** research-agent
+**Input:** Analysis results
+**Steps:**
+1. Write structured research report:
+   - Executive Summary
+   - Methodology
+   - Findings (with sources)
+   - Analysis & Insights
+   - Recommendations
+   - Confidence Level
+   - Limitations
+2. Save to company knowledge base
+**Output:** `companies/<name>/outputs/research-agent/report-<topic>-<date>-v1.md`
+**Gate:** Report must have 3+ cited sources and confidence assessment
+
+## Failure Handling
+- Insufficient sources → broaden search or note as limitation
+- Conflicting data → present multiple perspectives with confidence levels
+- Scope too broad → narrow focus, document what was excluded

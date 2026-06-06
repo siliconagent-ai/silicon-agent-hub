@@ -1,0 +1,32 @@
+{
+  "name": "silicon-agent-hub",
+  "version": "3.0.0",
+  "description": "Virtual company marketplace — browse company packs, agent store, workflow store. Create, manage, and operate any type of company with dynamically generated agents and workflows.",
+  "entry": "SKILL.md",
+  "commands": [
+    {
+      "name": "silicon-agent",
+      "description": "Hub marketplace — browse packs, create companies, execute tasks, manage agents"
+    }
+  ],
+  "agents": [
+    "agents/master.md",
+    "agents/ceo-advisor.md",
+    "agents/coo.md",
+    "agents/product-manager.md",
+    "agents/engineer.md",
+    "agents/qa-engineer.md",
+    "agents/marketing-manager.md",
+    "agents/sales-agent.md",
+    "agents/support-agent.md",
+    "agents/finance-agent.md",
+    "agents/research-agent.md"
+  ],
+  "skills": [
+    "skills/company-generator/SKILL.md",
+    "skills/agent-spawner/SKILL.md",
+    "skills/company-manager/SKILL.md",
+    "skills/task-executor/SKILL.md",
+    "skills/marketplace/SKILL.md"
+  ]
+}

@@ -1,0 +1,70 @@
+# Product Development Workflow
+
+## Description
+End-to-end product development pipeline: PRD → Architecture → Implement → QA → Release
+
+## Phases
+
+### Phase 1: Research
+**Agent:** research-agent
+**Input:** Feature description from task wall
+**Steps:**
+1. Conduct market research on the feature area
+2. Analyze competitors and existing solutions
+3. Gather user needs and pain points
+4. Write research report with recommendations
+**Output:** `companies/<name>/outputs/research-agent/research-<feature>-<date>-v1.md`
+
+### Phase 2: Design (PRD)
+**Agent:** product-manager
+**Input:** Research report
+**Steps:**
+1. Write PRD based on research findings
+2. Define user stories with acceptance criteria
+3. Set priority scores (P0-P3)
+4. Define success metrics
+**Output:** `companies/<name>/outputs/product-manager/prd-<feature>-<date>-v1.md`
+**Gate:** PRD must have all required sections (see PM quality gates)
+
+### Phase 3: Implementation
+**Agent:** engineer
+**Input:** PRD with user stories
+**Steps:**
+1. Design technical architecture
+2. Implement features based on acceptance criteria
+3. Write unit and integration tests
+4. Ensure all tests pass
+5. Write documentation
+**Output:** `companies/<name>/outputs/engineer/impl-<feature>-<date>-v1.md`
+**Gate:** All tests pass, code reviewed
+
+### Phase 4: QA Review
+**Agent:** qa-engineer
+**Input:** Implementation + PRD
+**Steps:**
+1. Create test plan based on PRD acceptance criteria
+2. Execute test plan
+3. Report bugs (if any) — loop back to Phase 3
+4. Validate all acceptance criteria met
+5. Write test report with coverage
+**Output:** `companies/<name>/outputs/qa-engineer/test-report-<feature>-<date>.md`
+**Gate:** All P0/P1 acceptance criteria pass
+
+### Phase 5: Release
+**Agent:** silicon-agent
+**Input:** QA report (all gates passed)
+**Steps:**
+1. Verify all quality gates passed
+2. Update task wall: task → done
+3. Generate release summary
+4. Log to audit trail
+**Output:** Release summary logged to audit
+
+## Failure Handling
+- Phase failure → log to `companies/<name>/memory/failures.md`
+- If phase fails 2× → route to `recovery.flow`
+- QA rejection → loop back to Phase 3 (max 3 loops, then escalate)
+
+## Context Budget
+- Max 3 phases in context at once
+- Completed phases summarized and archived to outputs

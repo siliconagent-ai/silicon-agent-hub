@@ -1,0 +1,61 @@
+# Bugfix Workflow
+
+## Description
+Structured bug fix pipeline: Report → Reproduce → Fix → Verify → Deploy
+
+## Phases
+
+### Phase 1: Bug Report & Triage
+**Agent:** support-agent
+**Input:** Bug description from user report or QA
+**Steps:**
+1. Classify bug: category, severity (P0-P3)
+2. Gather environment details and reproduction steps
+3. Check for duplicates in existing issues
+4. Assign to engineer based on area
+**Output:** `companies/<name>/outputs/support-agent/bug-report-<id>-<date>.md`
+
+### Phase 2: Reproduce
+**Agent:** engineer
+**Input:** Bug report with reproduction steps
+**Steps:**
+1. Reproduce the bug in local environment
+2. Confirm reproduction steps are accurate
+3. Identify affected code paths
+4. Assess blast radius
+**Output:** Updated bug report with confirmation status
+
+### Phase 3: Fix
+**Agent:** engineer
+**Input:** Confirmed bug with code path analysis
+**Steps:**
+1. Implement fix for the bug
+2. Write regression test that catches the bug
+3. Verify fix resolves the issue
+4. Run full test suite to check for side effects
+**Output:** `companies/<name>/outputs/engineer/bugfix-<id>-<date>-v1.md`
+
+### Phase 4: Verify
+**Agent:** qa-engineer
+**Input:** Bug fix + original bug report
+**Steps:**
+1. Verify original reproduction steps no longer trigger bug
+2. Run regression test suite
+3. Test edge cases related to the fix
+4. Confirm no new bugs introduced
+**Output:** `companies/<name>/outputs/qa-engineer/verify-<id>-<date>.md`
+
+### Phase 5: Deploy
+**Agent:** silicon-agent
+**Input:** QA verification (passed)
+**Steps:**
+1. Verify all quality gates passed
+2. Update task wall: task → done
+3. Notify support-agent that bug is resolved
+4. Log to audit trail
+**Output:** Deployment logged to audit
+
+## Failure Handling
+- Cannot reproduce → mark as "needs more info", return to support-agent
+- Fix introduces new bugs → revert, log failure, escalate
+- QA verification fails → loop back to Phase 3 (max 3 loops)

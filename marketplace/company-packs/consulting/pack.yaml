@@ -1,0 +1,49 @@
+name: consulting
+display_name: Consulting Firm
+description: "Professional services and consulting firm with technical delivery and research teams"
+industry: Professional Services
+tags: [consulting, services, professional, advisory]
+
+agents:
+  - name: product-manager
+    display_name: Engagement Manager
+    department: engineering
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: engineer
+    display_name: Technical Consultant
+    department: engineering
+    level: 3
+    reports_to: product-manager
+    source: built-in
+  - name: qa-engineer
+    display_name: Quality Analyst
+    department: engineering
+    level: 3
+    reports_to: product-manager
+    source: built-in
+  - name: research-agent
+    display_name: Research Analyst
+    department: executive
+    level: 3
+    reports_to: coo
+    source: built-in
+  - name: finance-agent
+    display_name: Finance Agent
+    department: finance
+    level: 2
+    reports_to: coo
+    source: built-in
+
+departments: [executive, engineering, finance]
+
+capability_map:
+  researcher: research-agent
+  implementer: engineer
+  reviewer: qa-engineer
+  coordinator: product-manager
+  marketing: product-manager
+  sales: product-manager
+  support: engineer
+  finance: finance-agent

@@ -1,0 +1,61 @@
+name: e-commerce
+display_name: E-Commerce Company
+description: "Online retail company with product, engineering, marketing, sales, support, and finance teams"
+industry: Retail / E-Commerce
+tags: [ecommerce, retail, online, marketplace, consumer]
+
+agents:
+  - name: product-manager
+    display_name: Product Manager
+    department: engineering
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: engineer
+    display_name: Engineer
+    department: engineering
+    level: 3
+    reports_to: product-manager
+    source: built-in
+  - name: qa-engineer
+    display_name: QA Engineer
+    department: engineering
+    level: 3
+    reports_to: product-manager
+    source: built-in
+  - name: marketing-manager
+    display_name: Marketing Manager
+    department: marketing
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: sales-agent
+    display_name: Sales Agent
+    department: sales
+    level: 2
+    reports_to: coo
+    source: built-in
+  - name: support-agent
+    display_name: Support Agent
+    department: support
+    level: 3
+    reports_to: coo
+    source: built-in
+  - name: finance-agent
+    display_name: Finance Agent
+    department: finance
+    level: 2
+    reports_to: coo
+    source: built-in
+
+departments: [executive, engineering, marketing, sales, support, finance]
+
+capability_map:
+  researcher: product-manager
+  implementer: engineer
+  reviewer: qa-engineer
+  coordinator: product-manager
+  marketing: marketing-manager
+  sales: sales-agent
+  support: support-agent
+  finance: finance-agent

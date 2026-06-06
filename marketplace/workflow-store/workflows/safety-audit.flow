@@ -1,0 +1,67 @@
+# Safety Audit Workflow
+
+## Description
+Construction/industrial: Plan inspection → Inspect site → Identify hazards → Report → Remediate
+
+## Phases
+
+### Phase 1: Plan Inspection
+**Agent:** safety-inspector (reviewer capability)
+**Input:** Site details, previous audit reports, regulations
+**Steps:**
+1. Review previous audit findings and outstanding issues
+2. Identify applicable safety regulations and standards
+3. Prepare inspection checklist customized for site type
+4. Schedule inspection with site team
+**Output:** `companies/<name>/outputs/safety-inspector/inspection-plan-<site>-<date>.md`
+
+### Phase 2: Inspect Site
+**Agent:** safety-inspector
+**Input:** Inspection plan and checklist
+**Steps:**
+1. Conduct physical walkthrough of site
+2. Check equipment condition and maintenance records
+3. Verify PPE usage and availability
+4. Review safety signage and emergency procedures
+5. Interview workers on safety awareness
+**Output:** Raw inspection findings document
+
+### Phase 3: Identify Hazards
+**Agent:** safety-inspector
+**Input:** Inspection findings
+**Steps:**
+1. Classify hazards by type (physical, chemical, ergonomic, biological)
+2. Rate each hazard by severity (critical/high/medium/low)
+3. Assess likelihood and potential impact
+4. Identify regulatory violations
+5. Prioritize corrective actions
+**Output:** `companies/<name>/outputs/safety-inspector/hazard-report-<site>-<date>.md`
+**Gate:** Every hazard must have severity rating and recommended corrective action
+
+### Phase 4: Report
+**Agent:** safety-inspector
+**Input:** Hazard report
+**Steps:**
+1. Compile comprehensive safety audit report
+2. Include executive summary for management
+3. Document all findings with evidence
+4. Provide corrective action plan with deadlines
+5. Calculate risk scores for each area
+**Output:** `companies/<name>/outputs/safety-inspector/safety-audit-report-<site>-<date>.md`
+**Gate:** Report must include: findings, risk scores, corrective actions, deadlines, responsible parties
+
+### Phase 5: Remediate
+**Agent:** site-manager (implementer capability)
+**Input:** Safety audit report with corrective actions
+**Steps:**
+1. Prioritize corrective actions by severity
+2. Assign remediation tasks to responsible parties
+3. Set deadlines for each corrective action
+4. Track remediation progress
+5. Schedule follow-up inspection
+**Output:** Remediation tracking document
+
+## Failure Handling
+- Critical hazard found during inspection → immediate stop-work authority, escalate to project-director
+- Remediation behind schedule → escalate, assign additional resources
+- Re-inspection fails → root cause analysis, revise safety protocols

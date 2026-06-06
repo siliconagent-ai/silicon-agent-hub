@@ -1,0 +1,69 @@
+# Production Planning Workflow
+
+## Description
+Manufacturing: Analyze capacity → Plan production → Budget → Schedule → Risk assessment
+
+## Phases
+
+### Phase 1: Analyze Capacity
+**Agent:** production-planner (coordinator capability)
+**Input:** Production targets, current capacity data, demand forecasts
+**Steps:**
+1. Analyze current production capacity by line/unit
+2. Review equipment uptime and maintenance schedules
+3. Assess workforce availability and skill levels
+4. Identify capacity bottlenecks and constraints
+5. Benchmark against industry standards
+**Output:** `companies/<name>/outputs/production-planner/capacity-analysis-<date>.md`
+
+### Phase 2: Plan Production
+**Agent:** production-planner
+**Input:** Capacity analysis, production targets
+**Steps:**
+1. Develop production plan to meet targets
+2. Allocate resources across production lines
+3. Plan material requirements and procurement
+4. Design production sequences and batching
+5. Create contingency plans for disruptions
+**Output:** `companies/<name>/outputs/production-planner/production-plan-<date>-v1.md`
+**Gate:** Plan must include: targets per unit, resource allocation, material requirements, timeline
+
+### Phase 3: Budget
+**Agent:** production-planner
+**Input:** Production plan with resource requirements
+**Steps:**
+1. Calculate material costs
+2. Estimate labor and overhead costs
+3. Project capital expenditure needs
+4. Calculate ROI and payback period
+5. Identify cost optimization opportunities
+**Output:** `companies/<name>/outputs/production-planner/production-budget-<date>.md`
+**Gate:** Budget must include: line items, totals, ROI projection, payback period
+
+### Phase 4: Schedule
+**Agent:** production-planner
+**Input:** Approved production plan and budget
+**Steps:**
+1. Create detailed production schedule with milestones
+2. Align with maintenance windows
+3. Coordinate with supply chain for material delivery
+4. Plan workforce shifts and assignments
+5. Set up monitoring checkpoints
+**Output:** `companies/<name>/outputs/production-planner/production-schedule-<date>.md`
+
+### Phase 5: Risk Assessment
+**Agent:** quality-inspector (reviewer capability)
+**Input:** Full production plan, budget, schedule
+**Steps:**
+1. Identify risks to production targets (equipment, supply, quality, workforce)
+2. Assess probability and impact of each risk
+3. Develop mitigation strategies for high-priority risks
+4. Create risk monitoring plan
+5. Final review and sign-off
+**Output:** `companies/<name>/outputs/quality-inspector/risk-assessment-<date>.md`
+**Gate:** Every high/critical risk must have a mitigation strategy
+
+## Failure Handling
+- Capacity insufficient for targets → propose capacity expansion options with cost analysis
+- Budget overrun → identify cost reduction alternatives or phased approach
+- Supply chain risk → identify alternative suppliers, build buffer stock

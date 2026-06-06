@@ -1,0 +1,47 @@
+# Hotfix Workflow
+
+## Description
+Emergency production fix pipeline: Fix → Test → Deploy (skip review for speed)
+
+## Phases
+
+### Phase 1: Assess & Fix
+**Agent:** engineer
+**Input:** Critical production issue description
+**Steps:**
+1. Assess severity and impact (must be P0 or P1)
+2. Identify root cause quickly
+3. Implement minimal fix (no refactoring)
+4. Write regression test
+**Output:** `companies/<name>/outputs/engineer/hotfix-<id>-<date>-v1.md`
+**Gate:** Fix must address root cause, not just symptoms
+
+### Phase 2: Quick Test
+**Agent:** qa-engineer
+**Input:** Hotfix implementation
+**Steps:**
+1. Verify fix resolves the immediate issue
+2. Run critical path tests only
+3. Check for obvious regressions
+4. Provide go/no-go recommendation
+**Output:** `companies/<name>/outputs/qa-engineer/hotfix-verify-<id>-<date>.md`
+
+### Phase 3: Deploy
+**Agent:** silicon-agent
+**Input:** QA go-ahead
+**Steps:**
+1. Deploy hotfix
+2. Verify production health
+3. Update task wall
+4. Schedule full regression test for next cycle
+5. Log to audit trail
+**Output:** Deployment logged to audit
+
+## Special Rules
+- Hotfix skips normal code review (speed priority)
+- Full regression test scheduled after deployment
+- Post-mortem required within 24 hours → writes to `companies/<name>/memory/failures.md`
+
+## Failure Handling
+- Fix doesn't resolve issue → escalate immediately, consider rollback
+- Regression detected → rollback hotfix, route to full bugfix.flow

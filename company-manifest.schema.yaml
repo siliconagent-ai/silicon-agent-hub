@@ -1,0 +1,147 @@
+# Company Manifest Schema
+# Reference for company configuration files (companies/<name>/manifest.md)
+
+name:
+  type: string
+  required: true
+  pattern: "^[a-z0-9][a-z0-9-]{1,48}[a-z0-9]$"
+  description: "Company identifier, 3-50 chars, lowercase with hyphens"
+
+type:
+  type: string
+  required: true
+  description: "Any free-form company type (e.g., SaaS, school, construction, hospital, semiconductor). Known types (SaaS, Consulting, Agency, E-commerce, Research) use pre-built agent rosters. All other types trigger AI-inferred blueprint generation."
+
+industry:
+  type: string
+  required: false
+  default: "General"
+  description: "Industry or vertical the company operates in"
+
+status:
+  type: string
+  required: true
+  enum:
+    - active
+    - paused
+    - archived
+  default: active
+
+budget:
+  allocated:
+    type: integer
+    required: false
+    default: 500000
+    description: "Total token budget for the company"
+  spent:
+    type: integer
+    required: true
+    default: 0
+  remaining:
+    type: integer
+    required: true
+
+headcount:
+  current:
+    type: integer
+    required: true
+    description: "Number of currently hired agents"
+  max:
+    type: integer
+    required: false
+    default: 10
+    description: "Maximum allowed agents"
+
+created:
+  type: string
+  format: "ISO-8601"
+  required: true
+  description: "Company creation timestamp"
+
+last_modified:
+  type: string
+  format: "ISO-8601"
+  required: true
+  description: "Last modification timestamp"
+
+# Pack — marketplace pack used to create this company (if any)
+pack:
+  type: string
+  required: false
+  description: "Name of the marketplace company-pack used to create this company (e.g., school, construction). Empty if created from known type or AI-inferred."
+
+# Blueprint — AI-inferred or user-specified org structure
+# Only present for non-standard company types
+blueprint:
+  departments:
+    type: list
+    description: "Dynamic department names derived from agents"
+  agents:
+    type: list
+    description: "Each agent has: name, display_name, department, level, reports_to, triggers, tools, responsibilities"
+    item_schema:
+      name:
+        type: string
+        required: true
+        description: "Role identifier (lowercase with hyphens)"
+      display_name:
+        type: string
+        required: true
+        description: "Human-readable name (e.g., 'Principal', 'Site Manager')"
+      department:
+        type: string
+        required: true
+        description: "Department this agent belongs to"
+      level:
+        type: integer
+        required: true
+        description: "Org hierarchy level (0=orchestrator, 1=executive, 2=management, 3=individual contributor)"
+      reports_to:
+        type: string
+        required: true
+        description: "Who this agent reports to (role name or 'CEO (Human)')"
+      triggers:
+        type: string
+        required: true
+        description: "Trigger phrases for natural language activation"
+      tools:
+        type: list
+        required: true
+        description: "List of tools this agent can use"
+      responsibilities:
+        type: list
+        required: true
+        description: "Key responsibilities"
+  capability_map:
+    type: object
+    description: "Maps workflow capability names to actual agent role names in this company"
+    default_capabilities:
+      researcher: "Agent responsible for research and investigation"
+      implementer: "Agent responsible for building/implementing/creating"
+      reviewer: "Agent responsible for quality review and validation"
+      coordinator: "Agent responsible for planning and coordination"
+      marketing: "Agent responsible for marketing and outreach"
+      sales: "Agent responsible for sales and business development"
+      support: "Agent responsible for support and issue resolution"
+      finance: "Agent responsible for financial management"
+
+# Known type → agent defaults (used for backward compatibility with 5 original types)
+known_type_defaults:
+  SaaS:
+    agents: [silicon-agent, product-manager, engineer, qa-engineer, marketing-manager, sales-agent, support-agent, finance-agent]
+    departments: [executive, engineering, marketing, sales, support, finance]
+  Consulting:
+    agents: [silicon-agent, product-manager, engineer, qa-engineer, research-agent, finance-agent]
+    departments: [executive, engineering, finance]
+  Agency:
+    agents: [silicon-agent, product-manager, engineer, marketing-manager, sales-agent]
+    departments: [executive, engineering, marketing, sales]
+  E-commerce:
+    agents: [silicon-agent, product-manager, engineer, qa-engineer, marketing-manager, sales-agent, support-agent, finance-agent]
+    departments: [executive, engineering, marketing, sales, support, finance]
+  Research:
+    agents: [silicon-agent, research-agent, engineer, product-manager, finance-agent]
+    departments: [executive, engineering, finance]
+  quickstart:
+    agents: [silicon-agent, product-manager, engineer]
+    departments: [executive, engineering]

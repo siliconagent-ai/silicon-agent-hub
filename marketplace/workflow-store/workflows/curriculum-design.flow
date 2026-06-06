@@ -1,0 +1,65 @@
+# Curriculum Design Workflow
+
+## Description
+Education-specific: Assess needs → Design curriculum → Review → Approve → Implement
+
+## Phases
+
+### Phase 1: Assess Needs
+**Agent:** curriculum-coordinator (coordinator capability)
+**Input:** Subject area, grade level, learning objectives
+**Steps:**
+1. Review current curriculum and identify gaps
+2. Analyze student performance data and learning outcomes
+3. Research educational standards and best practices
+4. Gather teacher and stakeholder feedback
+5. Produce needs assessment document
+**Output:** `companies/<name>/outputs/curriculum-coordinator/needs-assessment-<subject>-<date>.md`
+
+### Phase 2: Design Curriculum
+**Agent:** teacher (implementer capability)
+**Input:** Needs assessment, educational standards
+**Steps:**
+1. Define learning objectives aligned to standards
+2. Design unit structure and lesson sequences
+3. Create assessment rubrics and evaluation criteria
+4. Plan differentiated instruction strategies
+5. Select resources and materials
+**Output:** `companies/<name>/outputs/teacher/curriculum-<subject>-<date>-v1.md`
+**Gate:** Curriculum must include: objectives, unit plans, assessments, differentiation strategies
+
+### Phase 3: Review
+**Agent:** principal (reviewer capability)
+**Input:** Draft curriculum
+**Steps:**
+1. Review alignment with educational standards
+2. Verify assessment quality and coverage
+3. Check for inclusivity and differentiation
+4. Provide feedback and revision requests
+**Output:** Review notes in curriculum document
+
+### Phase 4: Approve
+**Agent:** principal
+**Input:** Revised curriculum
+**Steps:**
+1. Final review of all components
+2. Verify budget for materials and resources
+3. Set implementation timeline
+4. Approve or request final changes
+**Gate:** All review criteria met, budget confirmed
+
+### Phase 5: Implement
+**Agent:** curriculum-coordinator
+**Input:** Approved curriculum
+**Steps:**
+1. Distribute curriculum to teachers
+2. Schedule training sessions if needed
+3. Set up progress monitoring checkpoints
+4. Update school records
+5. Log to audit trail
+**Output:** Implementation plan and teacher assignments
+
+## Failure Handling
+- Needs assessment inconclusive → gather more data, extend Phase 1
+- Curriculum doesn't meet standards → revise and re-review (max 2 revisions)
+- Budget insufficient → escalate to principal for reallocation

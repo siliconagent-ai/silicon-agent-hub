@@ -1,0 +1,61 @@
+name: school
+display_name: School / Educational Institution
+description: "K-12 school or educational institution with administration, faculty, student services, and operations"
+industry: Education
+tags: [school, education, k-12, university, teaching, academic]
+
+agents:
+  - name: principal
+    display_name: Principal
+    department: administration
+    level: 1
+    reports_to: CEO (Human)
+    source: marketplace
+  - name: vice-principal
+    display_name: Vice Principal
+    department: administration
+    level: 2
+    reports_to: principal
+    source: marketplace
+  - name: curriculum-coordinator
+    display_name: Curriculum Coordinator
+    department: faculty
+    level: 2
+    reports_to: principal
+    source: marketplace
+  - name: teacher
+    display_name: Teacher
+    department: faculty
+    level: 3
+    reports_to: curriculum-coordinator
+    source: marketplace
+  - name: counselor
+    display_name: School Counselor
+    department: student-services
+    level: 2
+    reports_to: principal
+    source: marketplace
+  - name: admissions-coordinator
+    display_name: Admissions Coordinator
+    department: student-services
+    level: 3
+    reports_to: counselor
+    source: marketplace
+  - name: budget-manager
+    display_name: Budget Manager
+    department: operations
+    level: 2
+    reports_to: principal
+    source: marketplace
+
+departments: [administration, faculty, student-services, operations]
+
+capability_map:
+  researcher: curriculum-coordinator
+  implementer: teacher
+  reviewer: principal
+  coordinator: vice-principal
+  marketing: admissions-coordinator
+  sales: admissions-coordinator
+  support: counselor
+  finance: budget-manager
