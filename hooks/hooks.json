@@ -1,27 +1,44 @@
 {
+  "description": "SiliconAgent Hub lifecycle hooks for session management and audit logging",
   "hooks": {
     "SessionStart": [
       {
-        "type": "command",
-        "command": "echo 'Loading active company context...'"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'SiliconAgent Hub: Session started. Load active company context if available.'"
+          }
+        ]
       }
     ],
     "PreCompact": [
       {
-        "type": "command",
-        "command": "echo 'Summarizing company state before compaction...'"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'SiliconAgent Hub: Pre-compact — preserving active company state.'"
+          }
+        ]
       }
     ],
     "SessionEnd": [
       {
-        "type": "command",
-        "command": "echo 'Persisting company state...'"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'SiliconAgent Hub: Session ending. Persisting company state.'"
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
-        "type": "command",
-        "command": "echo 'Agent action completed.'"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'SiliconAgent Hub: Tool use completed.'"
+          }
+        ]
       }
     ]
   }
