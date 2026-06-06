@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "silicon-agent-hub",
+      "name": "silicon-agent",
       "description": "Virtual company factory marketplace with 10 industry packs, 17 agents, 10 workflows. Supports SaaS, schools, construction, hospitals, semiconductor fabs, restaurants, and any custom company type. Dynamic task execution with free-form natural language.",
       "author": {
         "name": "SiliconAgent AI"
