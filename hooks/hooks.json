@@ -1,20 +1,28 @@
 {
   "hooks": {
-    "SessionStart": {
-      "description": "Load active company context from previous session",
-      "action": "Check for last active company in companies/*/manifest.md (most recent last_modified). If found, read manifest.md, structure.md, and taskwall.md to restore context."
-    },
-    "PreCompact": {
-      "description": "Summarize company state before context compaction",
-      "action": "Read active company's shared-context.md. Keep: active tasks, blockers, recent decisions. Drop: completed task details, old chatter. Write summarized version back."
-    },
-    "SessionEnd": {
-      "description": "Persist company state at session end",
-      "action": "Update last_modified in manifest.md. Write current working state to shared-context.md. Ensure all agent state files are up to date."
-    },
-    "PostAgentRun": {
-      "description": "Audit log after every agent execution",
-      "action": "Append agent action result to companies/<name>/logs/audit.jsonl with timestamp, agent name, action, and result."
-    }
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "echo 'Loading active company context...'"
+      }
+    ],
+    "PreCompact": [
+      {
+        "type": "command",
+        "command": "echo 'Summarizing company state before compaction...'"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "type": "command",
+        "command": "echo 'Persisting company state...'"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "echo 'Agent action completed.'"
+      }
+    ]
   }
 }
